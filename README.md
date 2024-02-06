@@ -1,4 +1,4 @@
-#Discord bot to control Pterodactyl server
+#discord-bot-pterodactyl-py
 Just a discord bot that gives you the ability to control your servers (as long as your server provider provides it)
 
 ---
@@ -10,7 +10,7 @@ Just a discord bot that gives you the ability to control your servers (as long a
 
 **Instructions to run inside Docker**
 1. Take `docker-compose.yml` and edit path where would be your config stored.
-2. Creat `config.py` from example-config.py
+2. Create `config.py` from example-config.py
 
 
 ---
