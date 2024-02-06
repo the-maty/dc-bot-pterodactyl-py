@@ -3,7 +3,7 @@ services:
 
    dcbot:
      container_name: Discord_bot
-     image: dc-bot-python
+     image: th3maty/dc-bot
      network_mode: "host"
      restart: unless-stopped
      volumes:
