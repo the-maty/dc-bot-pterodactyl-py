@@ -4,7 +4,7 @@ Just a discord bot that gives you the ability to control your servers (as long a
 ---
 
 **Instructions to run inside Docker**
-1. Take `docker-compose.yml` and edit path where would be your config stored.
+1. Take `docker-compose.yml` and edit path where will be your config stored.
 2. Create `config.py` from example-config.py
 
 
