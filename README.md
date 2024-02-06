@@ -8,17 +8,19 @@ Just a discord bot that gives you the ability to control your servers (as long a
 
 ---
 
-**WHAT TO NOT DO?**
-- host this on the same server with your bot. **I AM NOT JOKING THIS WILL BREAK A LOT OF STUFF**
+**Instructions to run inside Docker**
+1. Take `docker-compose.yml` and edit path where would be your config stored.
+2. Creat `config.py` from example-config.py
+
 
 ---
 
-**Instructions**
+**Instructions for normal use**
 1. Git Pull or Download the repo to your server
-2. Add your [discord bot token](https://discord.com/developers/applications) along with your **API Credentials** and your **Host's Panel Link** to the file in **utils > config.py**
-3. Navigate to **Cogs > petro.py** and replace `USER ID` and `SERVER IDENTIFICATION` with your User ID and Pterodactyl Server identifier.
+2. Add your [discord bot token](https://discord.com/developers/applications) along with your **API Credentials** and your **Host's Panel Link** to the file in **config > config.py**
+3. Navigate to **Cogs > petro.py** `SERVER IDENTIFICATION` with Pterodactyl Server identifier.
 4. Navigate to the console and run `pip install -U -r requirements.txt` **(ENSURE YOUR DIRECTORY IS CORRECT BEFORE RUNNING IT)**
-5. Run `python main.py` in the console
+5. Run `python3 main.py` in the console
 6. Your bot should be up and running with the commands in place
 
 ---
