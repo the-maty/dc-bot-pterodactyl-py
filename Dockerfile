@@ -1,5 +1,4 @@
 FROM --platform=linux/amd64 python:3.11-slim-bookworm as build
-FROM --platform=linux/arm64 python:3.11-slim-bookworm as build
 
 WORKDIR /app
 
