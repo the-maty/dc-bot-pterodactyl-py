@@ -2,9 +2,9 @@ version: '3'
 services:
 
    dcbot:
-     container_name: Discord_Bot
-     image: dc-bot-python:latest
+     container_name: Discord_bot
+     image: dc-bot-python
      network_mode: "host"
      restart: unless-stopped
      volumes:
-       - /portainer/Files/AppData/Config/DiscordBot/config:/app
+       - /portainer/Files/AppData/Config/DiscordBot/config:/app/config
