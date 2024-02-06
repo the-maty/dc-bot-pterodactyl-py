@@ -3,11 +3,6 @@ Just a discord bot that gives you the ability to control your servers (as long a
 
 ---
 
-- It would be nice if you would give me credit when using this
-- This project SHOULD work with no issues. If there's one, open an issue and I will check it out.
-
----
-
 **Instructions to run inside Docker**
 1. Take `docker-compose.yml` and edit path where would be your config stored.
 2. Create `config.py` from example-config.py
@@ -41,7 +36,3 @@ Just a discord bot that gives you the ability to control your servers (as long a
 2. Right click on yourself in any server or dm
 3. Click **Copy User ID**
 4. That's your user ID
-
----
-
-ok that's all...  *sponsor me if you'd like :)*
