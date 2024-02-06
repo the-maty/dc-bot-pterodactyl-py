@@ -2,3 +2,5 @@
 __pycache__
 config/config.py
 Docker_Builder.sh
+Dockerfile
+.dockerignore
