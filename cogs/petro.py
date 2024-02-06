@@ -5,7 +5,7 @@ from discord.ext import commands
 from pydactyl import PterodactylClient
 import humanfriendly
 from humanfriendly import format_size, format_timespan
-from utils.config import pterodactylapikey, pterodactyldomain, AUTHORIZED_USERS
+from config import pterodactylapikey, pterodactyldomain, AUTHORIZED_USERS
 from discord.commands import slash_command, option
 
 # NOTES:

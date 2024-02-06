@@ -3,3 +3,4 @@ __pycache__
 docker-compose.yml
 README.md
 instrukce.txt
+config.py

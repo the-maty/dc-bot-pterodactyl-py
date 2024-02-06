@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from utils.config import token
+from config import token
 
 bot = commands.Bot(command_prefix="?")
 
