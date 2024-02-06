@@ -7,4 +7,4 @@ services:
      network_mode: "host"
      restart: unless-stopped
      volumes:
-       - /portainer/Files/AppData/Config/DiscordBot/config:/app/utils
+       - /portainer/Files/AppData/Config/DiscordBot/config:/app
