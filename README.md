@@ -1,4 +1,4 @@
-# Pterodactyl-Control-Discord-Bot
+#Discord bot to control Pterodactyl server
 Just a discord bot that gives you the ability to control your servers (as long as your server provider provides it)
 
 ---
