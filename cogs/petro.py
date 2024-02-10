@@ -1,4 +1,6 @@
 from logging import error
+import asyncio
+import subprocess
 import requests
 import discord
 from discord.ext import commands, tasks
@@ -49,12 +51,17 @@ class ptrodactylcontrols(commands.Cog):
         if server_id == "Enshrouded":
             server_id = "6cb65669"
         return server_id
-    
+
     @tasks.loop(minutes=1)
     async def update_presence(self):
+        global global_error_type
         server_id = "6cb65669"  # Replace with the actual server ID now only works when one ID in future more
+        response = None  # Initialize response variable
 
         try:
+            # Check if the host is available before fetching server information
+            subprocess.run(["ping", "-c", "1", "-q", "-W", "1", "192.168.2.241"], check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
             response = api.client.servers.get_server_utilization(server_id, detail=True)
 
             if response["attributes"]["current_state"] == "running":
@@ -62,8 +69,18 @@ class ptrodactylcontrols(commands.Cog):
             else:
                 await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="tvou rodinu"))
 
-        except requests.exceptions.HTTPError:
-            print("Error updating presence")
+        except asyncio.TimeoutError:
+            print("Timeout error detected")
+            global_error_type = "timeout"
+        except subprocess.CalledProcessError as e:
+            #print(f"Error when host down: {e}")
+            global_error_type = "host_unreachable"
+            # Set bot presence to idle when the host is unreachable
+            await self.bot.change_presence(status=discord.Status.idle, activity=discord.Activity(type=discord.ActivityType.watching, name="host status ❌"))
+
+        except Exception as e:
+            print(f"Error updating presence: {e}")
+            global_error_type = "other"
 
     @update_presence.before_loop
     async def before_update_presence(self):
