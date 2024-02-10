@@ -1,7 +1,7 @@
 from logging import error
 import requests
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 from pydactyl import PterodactylClient
 import humanfriendly
 from humanfriendly import format_size, format_timespan
@@ -41,6 +41,7 @@ class ServerError:
 class ptrodactylcontrols(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.update_presence.start()
 
    # THE SERVER IDENTIFICATION MUST BE SAME AS THE ONE PROVIDED ABOVE. SPACES ARE NOT ALLOWED DUE TO HOW IT WORKS
     def Convert_Friendly_Name_to_ID(self, server_id):
@@ -48,6 +49,25 @@ class ptrodactylcontrols(commands.Cog):
         if server_id == "Enshrouded":
             server_id = "6cb65669"
         return server_id
+    
+    @tasks.loop(minutes=2)
+    async def update_presence(self):
+        server_id = "6cb65669"  # Replace with the actual server ID now only works when one ID in future more
+
+        try:
+            response = api.client.servers.get_server_utilization(server_id, detail=True)
+
+            if response["attributes"]["current_state"] == "running":
+                await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="tvou rodinu"))
+            else:
+                await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="tvou rodinu"))
+
+        except requests.exceptions.HTTPError:
+            print("Error updating presence")
+
+    @update_presence.before_loop
+    async def before_update_presence(self):
+        await self.bot.wait_until_ready()
 
     @slash_command(description="Pterodactyl control commands")
     @option(name="server",autocomplete=discord.utils.basic_autocomplete(authchecker))
