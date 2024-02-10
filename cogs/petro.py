@@ -50,7 +50,7 @@ class ptrodactylcontrols(commands.Cog):
             server_id = "6cb65669"
         return server_id
     
-    @tasks.loop(minutes=2)
+    @tasks.loop(minutes=1)
     async def update_presence(self):
         server_id = "6cb65669"  # Replace with the actual server ID now only works when one ID in future more
 
