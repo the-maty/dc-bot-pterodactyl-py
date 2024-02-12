@@ -1,6 +1,6 @@
 .DS_Store
 __pycache__
 config/config.py
-Docker_Builder.sh
+docker_img_builder.sh
 Dockerfile
 .dockerignore
