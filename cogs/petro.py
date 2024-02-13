@@ -261,7 +261,8 @@ class ptrodactylcontrols(commands.Cog):
                         embed=discord.Embed(
                             description=f"❌ **Invalid action**, please use `start`, `stop`, `restart`, `sendcommand`, `kill` or `status`"
                         )
-                    )
+                    )   
+    
 
     @commands.command()
     @commands.is_owner()
@@ -505,7 +506,24 @@ class ptrodactylcontrols(commands.Cog):
                 )
             )
             raise ServerError  # type: ignore
+        
+    @slash_command(description="Check bot latency")
+    @commands.cooldown(1, 30, commands.BucketType.user)
+    async def ping(self, ctx: commands.Context):
+        """
+        Check bot latency.
+        """
 
+        # Authorization check
+        if not await is_authorized().predicate(ctx):
+            return await ctx.respond("❌ You are not authorized to use this command.", ephemeral=True)        
+
+        latency = round(self.bot.latency * 1000)
+        await ctx.respond(
+            embed=discord.Embed(
+                description=f"🏓 Pong! Latency: {latency}ms"
+            )
+        )     
 
 def setup(bot):
     bot.add_cog(ptrodactylcontrols(bot))
