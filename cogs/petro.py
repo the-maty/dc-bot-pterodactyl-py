@@ -508,7 +508,7 @@ class ptrodactylcontrols(commands.Cog):
             raise ServerError  # type: ignore
         
     @slash_command(description="Check bot latency")
-    @commands.cooldown(1, 30, commands.BucketType.user)
+    @commands.cooldown(1, 15, commands.BucketType.user)
     async def ping(self, ctx: commands.Context):
         """
         Check bot latency.
