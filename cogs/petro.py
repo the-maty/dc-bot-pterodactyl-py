@@ -516,14 +516,28 @@ class ptrodactylcontrols(commands.Cog):
 
         # Authorization check
         if not await is_authorized().predicate(ctx):
-            return await ctx.respond("❌ You are not authorized to use this command.", ephemeral=True)        
+            return await ctx.respond("❌ You are not authorized to use this command.", ephemeral=True)
 
-        latency = round(self.bot.latency * 1000)
-        await ctx.respond(
-            embed=discord.Embed(
-                description=f"🏓 Pong! Latency: {latency}ms"
+        try:
+            # Defer the initial response
+            await ctx.defer()
+
+            result = subprocess.run(['ping', '-c', '4', 'google.com'], stdout=subprocess.PIPE, text=True, check=True)
+
+            # Extract the round-trip time from the output
+            ping_time = float(result.stdout.split('time=')[-1].split(' ')[0])
+
+            # Edit the message with the reply
+            await ctx.edit(
+                embed=discord.Embed(
+                    description=f"🏓 Pong! Latency: {ping_time}ms"
+                )
             )
-        )     
+        except subprocess.CalledProcessError as e:
+            await ctx.respond(f"❌ Error: {e}", ephemeral=True)
+        except commands.CommandOnCooldown as e:
+            # Correctly handle the cooldown error
+            await ctx.respond(f"❌ Command is on cooldown. Please try again in {e.retry_after:.2f} seconds.", ephemeral=True)
 
 def setup(bot):
     bot.add_cog(ptrodactylcontrols(bot))
