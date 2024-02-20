@@ -194,7 +194,7 @@ class ptrodactylcontrols(commands.Cog):
                     # YOU WILL HAVE TO MANUALLY ADD THE LIMIT PROVIDED BY YOUR SERVER PROVIDER DUE TO PTERODACTYL LIMITATION(s).
                     # YOU MAY REMOVE THE DISK/RAM LIMIT(s) DOWN BELOW IF THERE IS NO LIMIT ON YOUR PTERODACTYL SERVER.
                     if server_id == "6cb65669":
-                        ramlimit = "5 GiB"
+                        ramlimit = "4 GiB"
                     embed = discord.Embed(
                         title="Server Details",
                         description=f"""
@@ -448,7 +448,7 @@ class ptrodactylcontrols(commands.Cog):
                 # YOU WILL HAVE TO MANUALLY ADD THE LIMIT PROVIDED BY YOUR SERVER PROVIDER DUE TO PTERODACTYL LIMITATION(s).
                 # YOU MAY REMOVE THE DISK/RAM LIMIT(s) DOWN BELOW IF THERE IS NO LIMIT ON YOUR PTERODACTYL SERVER.
                 if server_id == "6cb65669":
-                    ramlimit = "5 GiB"
+                    ramlimit = "4 GiB"
                 embed = discord.Embed(
                     title="Server Details",
                     description=f"""
